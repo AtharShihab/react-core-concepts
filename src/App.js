@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -9,15 +9,20 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Person name="Rubel" job="Karateka"></Person>
+        <Person name="Jasim" job="thela gari chalok"></Person>
+        <Person name="Bapparaz" job="cheka khaoa"></Person>
+        <Person name="Elias K" job="sapure"></Person>
       </header>
+    </div>
+  );
+}
+
+function Person(props) {
+  return (
+    <div style={{ border: "2px solid red", margin: "2px" }}>
+      <h1>Name: {props.name}</h1>
+      <h3>Job: {props.job}</h3>
     </div>
   );
 }

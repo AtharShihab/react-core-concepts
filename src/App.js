@@ -1,27 +1,67 @@
 import logo from "./logo.svg";
 import "./App.css";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const nayoks = ["Anwar", "Jafor", "Alomgir", "Salman", "Bappi", "Shuvo"];
   const products = [
     { name: "Photoshop", price: "$90.99" },
     { name: "Illustrator", price: "$60.99" },
     { name: "PDF Reader", price: "$6.99" },
+    { name: "Premiere El", price: "$249.99" },
   ];
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Product product={products[0]}></Product>
-        <Product product={products[1]}></Product>
-        <Product product={products[2]}></Product>
+        <Counter></Counter>
+        <Users></Users>
+        {/* <ul>
+          {nayoks.map((nayok) => (
+            <li>{nayok}</li>
+          ))}
+          {products.map((product) => (
+            <li>{product.name}</li>
+          ))}
+        </ul>
+        {products.map((pd) => (
+          <Product product={pd}></Product>
+        ))}
         <Person name="Rubel" job="Karateka"></Person>
         <Person name="Jasim" job="thela gari chalok"></Person>
         <Person name="Bapparaz" job="cheka khaoa"></Person>
-        <Person name="Elias K" job="sapure"></Person>
+        <Person name="Elias K" job="sapure"></Person> */}
       </header>
+    </div>
+  );
+}
+
+function Counter(props) {
+  const [count, setCount] = useState(10);
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </div>
+  );
+}
+
+function Users() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  });
+  return (
+    <div>
+      <h3>Dynamic Users: {users.length}</h3>
+      <ul>
+        {users.map((user) => (
+          <li>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
